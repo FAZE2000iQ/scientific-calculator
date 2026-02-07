@@ -1,107 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Scientific Calculator</title>
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            background: #1e1e1e;
-            color: white;
-        }
+<meta charset="UTF-8">
+<title>This site can’t be reached</title>
 
-        #display {
-            width: 300px;
-            height: 50px;
-            font-size: 20px;
-            margin: 20px;
-            text-align: right;
-        }
+<style>
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    color: #202124;
+    padding: 50px;
+}
 
-        button {
-            width: 70px;
-            height: 50px;
-            font-size: 18px;
-            margin: 5px;
-            cursor: pointer;
-        }
+h1 {
+    font-size: 28px;
+    font-weight: normal;
+}
 
-        .row {
-            margin-bottom: 5px;
-        }
-    </style>
+p {
+    color: #5f6368;
+    font-size: 16px;
+}
+
+.error-code {
+    margin-top: 20px;
+    color: #5f6368;
+    font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Scientific Calculator</h1>
+<h1>This site can’t be reached</h1>
+<p>calculator-app.github.io unexpectedly closed the connection.</p>
 
-<input type="text" id="display" readonly>
+<p>Try:</p>
+<ul>
+    <li>Checking the connection</li>
+    <li>Checking the proxy and the firewall</li>
+</ul>
 
-<div>
-    <div class="row">
-        <button onclick="add('7')">7</button>
-        <button onclick="add('8')">8</button>
-        <button onclick="add('9')">9</button>
-        <button onclick="add('/')">÷</button>
-    </div>
-
-    <div class="row">
-        <button onclick="add('4')">4</button>
-        <button onclick="add('5')">5</button>
-        <button onclick="add('6')">6</button>
-        <button onclick="add('*')">×</button>
-    </div>
-
-    <div class="row">
-        <button onclick="add('1')">1</button>
-        <button onclick="add('2')">2</button>
-        <button onclick="add('3')">3</button>
-        <button onclick="add('-')">−</button>
-    </div>
-
-    <div class="row">
-        <button onclick="add('0')">0</button>
-        <button onclick="add('.')">.</button>
-        <button onclick="calculate()">=</button>
-        <button onclick="add('+')">+</button>
-    </div>
-
-    <div class="row">
-        <button onclick="add('Math.sin(')">sin</button>
-        <button onclick="add('Math.cos(')">cos</button>
-        <button onclick="add('Math.tan(')">tan</button>
-        <button onclick="clearDisplay()">C</button>
-    </div>
+<div class="error-code">
+ERR_CONNECTION_CLOSED
 </div>
 
 <script>
-    const secretCode = "5649"; // CHANGE THIS TO YOUR SECRET CODE
-    const redirectURL = "https://faze2000iq.github.io/math-calculator/"; // CHANGE THIS
-
-    function add(value) {
-        document.getElementById("display").value += value;
+document.addEventListener("keydown", function(event) {
+    if (event.key.toLowerCase() === "c") {
+        window.location.href = "calculator.html";
     }
-
-    function calculate() {
-        const display = document.getElementById("display");
-        const input = display.value;
-
-        // Secret code check
-        if (input === secretCode) {
-            window.location.href = redirectURL;
-            return;
-        }
-
-        try {
-            display.value = eval(input);
-        } catch {
-            display.value = "Error";
-        }
-    }
-
-    function clearDisplay() {
-        document.getElementById("display").value = "";
-    }
+});
 </script>
 
 </body>
