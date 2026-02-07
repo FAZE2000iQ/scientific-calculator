@@ -46,8 +46,18 @@ ERR_CONNECTION_CLOSED
 </div>
 
 <script>
+const secretCode = "thegoatiscollin";
+let typedKeys = "";
+
 document.addEventListener("keydown", function(event) {
-    if (event.key.toLowerCase() === "c") {
+    typedKeys += event.key.toLowerCase();
+
+    // Trim to correct length
+    if (typedKeys.length > secretCode.length) {
+        typedKeys = typedKeys.slice(-secretCode.length);
+    }
+
+    if (typedKeys === secretCode) {
         window.location.href = "calculator.html";
     }
 });
