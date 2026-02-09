@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Game Hub</title>
+<style>
+body {
+    background: #121212;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+#gameContainer {
+    margin-top: 40px;
+}
+
+.game-link {
+    display: block;
+    margin: 10px auto;
+    padding: 15px;
+    background: #1f1f1f;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    width: 300px;
+    transition: 0.2s;
+}
+
+.game-link:hover {
+    background: #333;
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 Secret Game Hub 🎮</h1>
+
+<div id="gameContainer"></div>
+
+<script>
+// 🔥 ADD YOUR GAME LINKS HERE
+const games = [
+    { name: "Game 1", url: "https://example.com" },
+    { name: "Game 2", url: "https://example.com" },
+    { name: "Game 3", url: "https://example.com" }
+];
+
+// Automatically generate buttons
+const container = document.getElementById("gameContainer");
+
+games.forEach(game => {
+    const link = document.createElement("a");
+    link.href = game.url;
+    link.target = "_blank";
+    link.className = "game-link";
+    link.textContent = game.name;
+    container.appendChild(link);
+});
+</script>
+
+</body>
+</html>
