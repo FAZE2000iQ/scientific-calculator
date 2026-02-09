@@ -10,11 +10,23 @@ body {
     text-align: center;
 }
 
-h1 {
-    margin-top: 30px;
+#display {
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    margin: 20px;
+    text-align: right;
 }
 
-#gameContainer {
+button {
+    width: 70px;
+    height: 50px;
+    font-size: 18px;
+    margin: 5px;
+}
+
+#gameSection {
+    display: none;
     margin-top: 40px;
 }
 
@@ -27,31 +39,92 @@ h1 {
     text-decoration: none;
     color: white;
     width: 300px;
-    transition: 0.2s;
 }
 
 .game-link:hover {
     background: #333;
-    transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<h1>🎮 Secret Game Hub 🎮</h1>
+<h1>Scientific Calculator</h1>
 
-<div id="gameContainer"></div>
+<input type="text" id="display" readonly>
+
+<br>
+
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button onclick="add('/')">÷</button>
+<br>
+
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button onclick="add('*')">×</button>
+<br>
+
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button onclick="add('-')">−</button>
+<br>
+
+<button onclick="add('0')">0</button>
+<button onclick="add('.')">.</button>
+<button onclick="calculate()">=</button>
+<button onclick="add('+')">+</button>
+<br>
+
+<button onclick="clearDisplay()">C</button>
+
+<!-- Hidden Game Section -->
+<div id="gameSection">
+    <h2>🎮 Game Hub 🎮</h2>
+    <div id="gameContainer"></div>
+</div>
 
 <script>
-// 🔥 ADD YOUR GAME LINKS HERE
+const gameUnlockCode = "999"; // CHANGE THIS
+
+// Add your games here
 const games = [
     { name: "Game 1", url: "https://example.com" },
-    { name: "Game 2", url: "https://example.com" },
-    { name: "Game 3", url: "https://example.com" }
+    { name: "Game 2", url: "https://example.com" }
 ];
 
-// Automatically generate buttons
+function add(value) {
+    document.getElementById("display").value += value;
+}
+
+function calculate() {
+    const display = document.getElementById("display");
+    const input = display.value;
+
+    // Secret unlock
+    if (input === gameUnlockCode) {
+        display.value = "Error";
+        setTimeout(() => {
+            document.getElementById("gameSection").style.display = "block";
+        }, 1000);
+        return;
+    }
+
+    try {
+        display.value = eval(input);
+    } catch {
+        display.value = "Error";
+    }
+}
+
+function clearDisplay() {
+    document.getElementById("display").value = "";
+}
+
+// Generate game links
 const container = document.getElementById("gameContainer");
 
 games.forEach(game => {
