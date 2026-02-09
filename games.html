@@ -1,94 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Game Hub</title>
-<style>
-body {
-    background: #121212;
-    color: white;
-    font-family: Arial;
-    text-align: center;
-}
-
-#display {
-    width: 300px;
-    height: 50px;
-    font-size: 20px;
-    margin: 20px;
-    text-align: right;
-}
-
-button {
-    width: 70px;
-    height: 50px;
-    font-size: 18px;
-    margin: 5px;
-}
-
-#gameSection {
-    display: none;
-    margin-top: 40px;
-}
-
-.game-link {
-    display: block;
-    margin: 10px auto;
-    padding: 15px;
-    background: #1f1f1f;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    width: 300px;
-}
-
-.game-link:hover {
-    background: #333;
-}
-</style>
-</head>
-
-<body>
-
-<h1>Scientific Calculator</h1>
-
-<input type="text" id="display" readonly>
-
-<br>
-
-<button onclick="add('7')">7</button>
-<button onclick="add('8')">8</button>
-<button onclick="add('9')">9</button>
-<button onclick="add('/')">÷</button>
-<br>
-
-<button onclick="add('4')">4</button>
-<button onclick="add('5')">5</button>
-<button onclick="add('6')">6</button>
-<button onclick="add('*')">×</button>
-<br>
-
-<button onclick="add('1')">1</button>
-<button onclick="add('2')">2</button>
-<button onclick="add('3')">3</button>
-<button onclick="add('-')">−</button>
-<br>
-
-<button onclick="add('0')">0</button>
-<button onclick="add('.')">.</button>
-<button onclick="calculate()">=</button>
-<button onclick="add('+')">+</button>
-<br>
-
-<button onclick="clearDisplay()">C</button>
-
-<!-- Hidden Game Section -->
-<div id="gameSection">
-    <h2>🎮 Game Hub 🎮</h2>
-    <div id="gameContainer"></div>
-</div>
-
 <script>
-const gameUnlockCode = "999"; // CHANGE THIS
+const gameUnlockCode = "999";      // shows game section
+const externalCode = "5649";       // redirects to other website
+const externalURL = "https://faze2000iq.github.io/math-calculator/"; // 🔁 CHANGE THIS
 
 // Add your games here
 const games = [
@@ -104,7 +17,7 @@ function calculate() {
     const display = document.getElementById("display");
     const input = display.value;
 
-    // Secret unlock
+    // 🔓 Unlock game section
     if (input === gameUnlockCode) {
         display.value = "Error";
         setTimeout(() => {
@@ -113,6 +26,16 @@ function calculate() {
         return;
     }
 
+    // 🌍 Redirect to other website
+    if (input === externalCode) {
+        display.value = "Error";
+        setTimeout(() => {
+            window.location.href = externalURL;
+        }, 1200);
+        return;
+    }
+
+    // Normal calculator behavior
     try {
         display.value = eval(input);
     } catch {
@@ -136,6 +59,3 @@ games.forEach(game => {
     container.appendChild(link);
 });
 </script>
-
-</body>
-</html>
